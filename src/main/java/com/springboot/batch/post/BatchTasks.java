@@ -6,9 +6,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+
 @Slf4j
 @Component
-public class BatchTasks {
+public class  BatchTasks {
 
     @Autowired
     private RestTemplate restTemplate;
@@ -17,7 +18,7 @@ public class BatchTasks {
     private static final String TASK_ZONE = "Asia/Tokyo";
 
     @Scheduled(cron = "${cron.post-delete}", zone = TASK_ZONE)
-    public void deletePostBatch() {
+    public void execute() {
         log.info("deletePostBatch() start");
         restTemplate.delete(URL_POST_DELETE_BATCH);
         log.info("deletePostBatch() end");
